@@ -22,7 +22,7 @@ package me.geleakter;
 
 import me.geleakter.utils.pw.Checker;
 import me.geleakter.utils.pw.Generator;
-import me.geleakter.utils.safe.Tresor;
+import me.geleakter.utils.web.Downloader;
 import me.geleakter.utils.terminal.ClearTerminalUtil;
 import me.geleakter.utils.terminal.ColorUtil;
 import me.geleakter.utils.terminal.LogUtil;
@@ -73,12 +73,12 @@ public class Main {
                         } else {
                             LogUtil.errorLog("Password list not found.");
                             LogUtil.infoLog("Downloading password list...");
-                            Tresor.download("https://raw.githubusercontent.com/kkrypt0nn/Wordlists/master/famous/facebook_phished.txt", "facebook_phished.txt");
-                            Tresor.download("https://raw.githubusercontent.com/kkrypt0nn/Wordlists/master/famous/fasttrack.txt", "fasttrack.txt");
-                            Tresor.download("https://raw.githubusercontent.com/kkrypt0nn/Wordlists/master/famous/fern_wifi.txt", "fern_wifi.txt");
-                            Tresor.download("https://raw.githubusercontent.com/scipag/password-list/main/organizations/password-list-gov.txt", "password-list-gov.txt");
-                            Tresor.download("https://raw.githubusercontent.com/danielmiessler/SecLists/master/Passwords/Common-Credentials/10-million-password-list-top-1000000.txt", "10-million-password-list-top-1000000.txt");
-                            Tresor.download("https://raw.githubusercontent.com/danielmiessler/SecLists/master/Passwords/Common-Credentials/10k-most-common.txt", "10k-most-common.txt");
+                            Downloader.download("https://raw.githubusercontent.com/kkrypt0nn/Wordlists/master/famous/facebook_phished.txt", "facebook_phished.txt");
+                            Downloader.download("https://raw.githubusercontent.com/kkrypt0nn/Wordlists/master/famous/fasttrack.txt", "fasttrack.txt");
+                            Downloader.download("https://raw.githubusercontent.com/kkrypt0nn/Wordlists/master/famous/fern_wifi.txt", "fern_wifi.txt");
+                            Downloader.download("https://raw.githubusercontent.com/scipag/password-list/main/organizations/password-list-gov.txt", "password-list-gov.txt");
+                            Downloader.download("https://raw.githubusercontent.com/danielmiessler/SecLists/master/Passwords/Common-Credentials/10-million-password-list-top-1000000.txt", "10-million-password-list-top-1000000.txt");
+                            Downloader.download("https://raw.githubusercontent.com/danielmiessler/SecLists/master/Passwords/Common-Credentials/10k-most-common.txt", "10k-most-common.txt");
                             LogUtil.infoLog("Downloaded. Please run the program again.");
                         }
                     } else {

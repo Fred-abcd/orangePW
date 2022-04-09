@@ -18,17 +18,13 @@
  * limitations under the License.
  */
 
-package me.geleakter.utils.safe;
+package me.geleakter.utils.web;
 
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class Tresor {
-
-    public static void main(String[] args) {
-        download("https://raw.githubusercontent.com/kkrypt0nn/Wordlists/master/famous/facebook_phished.txt", "facebook_phished.txt");
-    }
+public class Downloader {
 
     //download a txt file from a url
     public static void download(String url, String file) {
