@@ -24,37 +24,34 @@ import java.security.SecureRandom;
 import java.util.Random;
 
 public class Generator {
-    //generating a safe password
-    /*
-    public static String generatePassword(int length) {
-        String password = "";
-        String chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!$%&/()=?-.,;._#+*~}@";
-        for (int i = 0; i < length; i++) {
-            password += chars.charAt((int) (Math.random() * chars.length()));
-        }
-        return password;
-    }*/
-
     private static final char[] all = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!§$%&/()=?{[]}+*~#'-_.:,;@€".toCharArray();
     private static final char[] lower = "abcdefghijklmnopqrstuvwxyz".toCharArray();
     private static final char[] upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
-    private static final char[] numbers = "1234567890".toCharArray();
-    private static final char[] symbols = "!§$%&/()=?{[]}+*~#'-_.:,;@€".toCharArray();
+    private static final char[] number = "1234567890".toCharArray();
+    private static final char[] symbol = "!§$%&/()=?{[]}+*~#'-_.:,;@€".toCharArray();
 
-    public static String generatePW(int length) {
+    public static String generatePassword(int length, boolean lowercase, boolean uppercase, boolean numbers, boolean symbols) {
+        String password = "";
         Random random = new SecureRandom();
-
-        StringBuilder pw = new StringBuilder();
-
-        for (int i = 0; i < length-4; i++) {
-            pw.append(all[random.nextInt(all.length)]);
+        if (lowercase) {
+            password += lower[random.nextInt(lower.length)];
         }
+        if (uppercase) {
+            password += upper[random.nextInt(upper.length)];
+        }
+        if (numbers) {
+            password += number[random.nextInt(number.length)];
+        }
+        if (symbols) {
+            password += symbol[random.nextInt(symbol.length)];
+        }
+        for (int i = 0; i < length - (lowercase ? 1 : 0) - (uppercase ? 1 : 0) - (numbers ? 1 : 0) - (symbols ? 1 : 0); i++) {
+            password += all[random.nextInt(all.length)];
+        }
+        return password;
+    }
 
-        pw.insert(random.nextInt(pw.length()), lower[random.nextInt(lower.length)]);
-        pw.insert(random.nextInt(pw.length()), upper[random.nextInt(upper.length)]);
-        pw.insert(random.nextInt(pw.length()), numbers[random.nextInt(numbers.length)]);
-        pw.insert(random.nextInt(pw.length()), symbols[random.nextInt(symbols.length)]);
-
-        return pw.toString();
+    public static String generatePassword(int length) {
+        return generatePassword(length, true, true, true, true);
     }
 }

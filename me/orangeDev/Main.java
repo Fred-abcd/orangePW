@@ -120,7 +120,7 @@ public class Main {
                             File tenK = new File("10k-most-common.txt");
                             File rocku75 = new File("rockyou-75.txt");
                             ClearTerminalUtil.clear();
-                            String generated = Generator.generatePW(length);
+                            String generated = Generator.generatePassword(length);
                             LogUtil.otherLog(ColorUtil.ANSI_CYAN, "Generated Password", generated);
                             System.out.println("");
                             System.out.println("");
