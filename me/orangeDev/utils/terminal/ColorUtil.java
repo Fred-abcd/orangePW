@@ -22,7 +22,6 @@ package me.orangeDev.utils.terminal;
 
 public class ColorUtil {
 
-    //FONT COLOR
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_BLACK = "\u001B[30m";
     public static final String ANSI_RED = "\u001B[31m";
@@ -35,7 +34,6 @@ public class ColorUtil {
     public static final String ANSI_ORANGE = "\u001B[38;2;255;165;0m";
     public static final String ANSI_DARK_ORANGE = "\u001B[38;2;255;140;0m";
 
-    //BACKGROUND
     public static final String ANSI_BLACK_BG = "\u001B[40m";
     public static final String ANSI_RED_BG = "\u001B[41m";
     public static final String ANSI_GREEN_BG = "\u001B[42m";

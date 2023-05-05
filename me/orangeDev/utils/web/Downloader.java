@@ -25,8 +25,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class Downloader {
-
-    //download a txt file from a url
     public static void download(String url, String file) {
         try {
             URL website = new URL(url);
@@ -34,18 +32,17 @@ public class Downloader {
             connection.setRequestMethod("GET");
             connection.setRequestProperty("User-Agent", "Mozilla/5.0");
             connection.connect();
-            BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-            String inputLine;
-            FileWriter fw = new FileWriter(file);
-            while ((inputLine = in.readLine()) != null) {
-                fw.write(inputLine + "\n");
+
+            try (BufferedInputStream in = new BufferedInputStream(connection.getInputStream());
+                 OutputStream out = new FileOutputStream(file)) {
+                byte[] buffer = new byte[4096];
+                int bytesRead;
+                while ((bytesRead = in.read(buffer)) != -1) {
+                    out.write(buffer, 0, bytesRead);
+                }
             }
-            fw.close();
-            in.close();
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-
 }
